@@ -1,0 +1,12 @@
+{
+  "templateFields": {
+    "PRODUCTNAME": "productName",
+    "IMAGE": "image",
+    "PRICE": "price",
+    "QUANTITY": "quantity",
+    "NUTRIENTS": "nutrients",
+    "DESCRIPTION": "description",
+    "ID": "id",
+    "FROM": "from"
+  }
+}
