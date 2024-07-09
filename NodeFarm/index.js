@@ -1,16 +1,18 @@
-const replaceTemplate = require("./modules/replaceTemplate");
-const http = require("http");
 const url = require("url");
+const http = require("http");
 const fs = require("fs");
+const slugify = require("slugify");
+const replaceTemplate = require("./modules/replaceTemplate");
 
 const productData = fs.readFileSync(
   `${__dirname}/data/product-data.json`,
   "utf-8"
 );
+
 const templateFields = JSON.parse(
   fs.readFileSync(`${__dirname}/config/template-fields.json`, "utf-8")
 );
-console.log(templateFields["templateFields"]);
+//console.log(templateFields["templateFields"]);
 
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
@@ -28,7 +30,7 @@ const tempCard = fs.readFileSync(
 const productDataJSON = JSON.parse(productData);
 
 const server = http.createServer((req, res) => {
-  console.log(req.url);
+  //console.log(req.url);
   const { query, pathname } = url.parse(req.url, true);
   console.log(`Query: ${query["id"]}, pathname: ${pathname}`);
   const pathName = req.url;
@@ -36,6 +38,8 @@ const server = http.createServer((req, res) => {
   if (pathname === "/" || pathname === "/overview") {
     res.writeHead(200, { "Content-type": "text/html" });
 
+    // leaving out the curly braces after the => expression will return output value
+    // of replaceTemplate
     const cardsHtml = productDataJSON
       .map((el) =>
         replaceTemplate(tempCard, el, templateFields["templateFields"])

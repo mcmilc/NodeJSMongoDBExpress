@@ -1,3 +1,4 @@
+// SECTION 2 - Part 10
 const fs = require("fs");
 const hello = "Hello World";
 console.log(hello);

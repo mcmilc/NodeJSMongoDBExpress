@@ -1,6 +1,14 @@
+// SECTION 2 - Part 11
 const http = require("http");
+/*
+- create server and provide callback function that is executed per request (req)
+- executing "curl -X GET http://localhost:8000" will fire an event that will result in the 
+  server responding "Hello ..."
+- the callback funciton gets executed each time there is a new request (req)
+*/
+
 const server = http.createServer((req, res) => {
-  console.log(req);
+  //console.log(req);
   res.end("Hello from the server!");
 });
 
